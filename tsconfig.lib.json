@@ -1,7 +1,7 @@
 {
   "extends": "./tsconfig.json",
   "compilerOptions": {
-    "outDir": "./out-tsc/lib",
+    "outDir": "./dist/out-tsc",
     "target": "es2015",
     "declaration": true,
     "inlineSources": true,
@@ -9,7 +9,12 @@
     "lib": [
       "dom",
       "es2018"
-    ]
+    ],
+    "paths": {
+      "ngx-facebook": [
+        "public_api"
+      ]
+    }
   },
   "angularCompilerOptions": {
     "skipTemplateCodegen": true,
