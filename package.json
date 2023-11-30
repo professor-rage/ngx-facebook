@@ -4,7 +4,7 @@
   "description": "Facebook SDK bindings for Angular applications",
   "scripts": {
     "prebuild": "rm -rf dist",
-    "build": "ng-packagr -p ./ng-package.json && cp README.md ./dist && cp LICENSE ./dist",
+    "build": "ng-packagr -p ./ng-package.json && cp README.md ./dist && cp LICENSE.md ./dist",
     "ghpages": "ng build --configuration production --no-progress",
     "docs": "zm-docs-gen",
     "postversion": "npm run changelog",
