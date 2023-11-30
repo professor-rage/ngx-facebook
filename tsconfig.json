@@ -23,7 +23,7 @@
     "skipLibCheck": true,
     "paths": {
       "ngx-facebook": [
-        "./public_api"
+        "src/public_api"
       ]
     },
     "useDefineForClassFields": false
