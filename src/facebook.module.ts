@@ -61,7 +61,7 @@ export function getComponents() {
   exports: getComponents()
 })
 export class FacebookModule {
-  static forRoot(): ModuleWithProviders {
+  static forRoot(): ModuleWithProviders<any> {
     return {
       ngModule: FacebookModule,
       providers: [FacebookService]

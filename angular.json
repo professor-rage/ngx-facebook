@@ -3,25 +3,99 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "facebook": {
-      "projectType": "library",
+    "ngx-facebook": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "less"
+        },
+        "@schematics/angular:application": {
+          "strict": true
+        }
+      },
       "root": "",
-      "sourceRoot": "src",
-      "prefix": "fb",
+      "sourceRoot": "",
+      "prefix": "app",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-ng-packagr:build",
+          "builder": "@angular-devkit/build-angular:application",
           "options": {
+            "outputPath": "dist",
+            "index": "src/index.html",
+            "browser": "src/facebook.module.ts",
+            "polyfills": [
+              "zone.js"
+            ],
             "tsConfig": "tsconfig.lib.json",
-            "project": "ng-package.json"
+            "assets": [
+            ],
+            "inlineStyleLanguage": "less",
+            "styles": [],
+            "scripts": []
           },
           "configurations": {
             "production": {
-              "tsConfig": "tsconfig.lib.prod.json"
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kb",
+                  "maximumError": "1mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "2kb",
+                  "maximumError": "4kb"
+                }
+              ],
+              "outputHashing": "all"
+            },
+            "development": {
+              "optimization": false,
+              "extractLicenses": false,
+              "sourceMap": true
             }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "configurations": {
+            "production": {
+            },
+            "development": {
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "karmaConfig": "./karma.conf.js",
+            "polyfills": [
+              "zone.js",
+              "zone.js/testing"
+            ],
+            "tsConfig": "tsconfig.spec.json",
+            "include": [
+              "lib/**/*.spec.ts"
+            ]
+          }
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": [
+              "src/**/*.ts",
+              "src/**/*.html",
+              "lib/**/*.ts",
+              "lib/**/*.html"
+            ]
           }
         }
       }
-    }},
-  "defaultProject": "facebook"
+    }
+  },
+  "cli": {
+    "analytics": false
+  }
 }
